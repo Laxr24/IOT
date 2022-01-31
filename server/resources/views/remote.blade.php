@@ -139,6 +139,34 @@
         }).catch((err)=>{
             console.log(err)
         })
+
+
+
+        // Update UI 
+
+        function updateUI(){
+            axios.get("http://127.0.0.1:8000/api").then((res) => {
+            speed = res.data.fan 
+            light = res.data.light 
+            console.log(res.data)
+
+            if(light){
+                l_btn.classList.add("active")
+                l_btn.innerHTML = "ON"
+            }
+            else{
+                l_btn.classList.remove("active")
+                l_btn.innerHTML = "OFF"
+            }
+            fanSpeed.innerHTML = speed
+        }).catch((err)=>{
+            console.log(err)
+        })
+        }
+
+        setInterval(()=>{
+           updateUI()
+        }, 3000);
     </script>
 
 </body>
