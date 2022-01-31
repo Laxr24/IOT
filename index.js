@@ -3,22 +3,26 @@ const axios = require("axios")
 const SerialPort = require("serialport")
 
 // Update your port location for MAC or Windows OS, simply run "npx @serialport/list"
-// const port = new SerialPort("Serial Port", {
-//     baudRate: 9600,
-//     // autoOpen: false
-// })
+const port = new SerialPort("/dev/tty.usbmodemFA13401", {
+    baudRate: 9600,
+    // autoOpen: false
+})
 
 var speed, light, cmd;
-
+var localLink = "http://127.0.0.1:8000"; 
+var webLink = "https://www.ishwardy.com"; 
 function control(){
-    axios.get("http://127.0.0.1:8000/api").then((res)=>{
+    axios.get(`${webLink}/api`).then((res)=>{
         speed = res.data.fan
         light = res.data.light
         cmd = res.data.cmd 
 
         if(cmd != ""){
+            if(cmd != null){
+                port.write(cmd)
+            }
             console.log(cmd)
-            axios.post("http://127.0.0.1:8000/iot", {
+            axios.post(`${webLink}/iot`, {
                 "fan": speed,
                 "light": light,
                 "cmd":""
