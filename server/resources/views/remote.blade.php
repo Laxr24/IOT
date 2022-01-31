@@ -69,7 +69,8 @@
                 fanSpeed.innerHTML = speed
                 axios.post("http://127.0.0.1:8000/iot", {
                     "fan": speed,
-                    "light": light
+                    "light": light,
+                    "cmd": "A"
                 }).then((res) => {
                     console.log(res.data)
                 })
@@ -86,7 +87,8 @@
 
                 axios.post("http://127.0.0.1:8000/iot", {
                     "fan": speed,
-                    "light": light
+                    "light": light,
+                    "cmd": "a"
                 }).then((res) => {
                     console.log(res.data)
                 })
@@ -100,7 +102,8 @@
                 l_btn.innerHTML = "ON"
                 axios.post("http://127.0.0.1:8000/iot", {
                     "fan": speed,
-                    "light": light
+                    "light": light,
+                    "cmd": "C"
                 }).then((res) => {
                     console.log(res.data)
                 })
@@ -109,7 +112,8 @@
                 l_btn.innerHTML = "OFF"
                 axios.post("http://127.0.0.1:8000/iot", {
                     "fan": speed,
-                    "light": light
+                    "light": light,
+                    "cmd": "c"
                 }).then((res) => {
                     console.log(res.data)
                 })

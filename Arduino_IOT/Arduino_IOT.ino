@@ -37,13 +37,15 @@ void dim_check() {
 }                                      
 void Wireless()
 {
-    BTData = Serial.read(); // read byte
+    if(Serial.available()){
+     BTData = Serial.read(); // read byte
     if(BTData == 'a') {if(dim<127){dim = dim + pas; if(dim>127) {dim=128;}}} // Step DOWN
     if(BTData == 'A') {if(dim>5){dim = dim - pas;   if(dim<0)   {dim=0;}}}   // Step UP
     if(BTData == 'B') {dim=0;}   // power is 100% (on)
     if(BTData == 'b') {dim=128;} // power is 0% (off)
     if(BTData == 'C') {digitalWrite(LIGHT, HIGH); } // LIGHT ON
     if(BTData == 'c') {digitalWrite(LIGHT, LOW); }  // LIGHT OFF
+    }
 }
 void loop() {  
                                      

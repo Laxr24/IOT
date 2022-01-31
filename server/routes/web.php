@@ -28,10 +28,12 @@ Route::post("/iot", function(Request $request){
     // Stroring the value from the client input
     $fan = $request->fan;
     $light = $request->light;
+    $cmd = $request->cmd;
 
     $config = [
         "fan"=>$fan, 
-        "light"=>$light
+        "light"=>$light,
+        "cmd"=>$cmd 
     ];
 
     $path = base_path()."/resources/config/config.json"; 
