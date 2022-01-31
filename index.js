@@ -3,7 +3,9 @@ const axios = require("axios")
 const SerialPort = require("serialport")
 
 // Update your port location for MAC or Windows OS, simply run "npx @serialport/list"
-const port = new SerialPort("/dev/tty.usbmodemFA13401", {
+let macPort = "/dev/tty.usbmodemFA13401"
+let pcPort = "COM3"
+const port = new SerialPort(pcPort, {
     baudRate: 9600,
     // autoOpen: false
 })
